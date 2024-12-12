@@ -20,4 +20,5 @@ out body;
 
 out skel qt;
 
-http://overpass-turbo.eu/s/vUY
+
+Copie o link no seu navegador: http://overpass-turbo.eu/s/vUY
