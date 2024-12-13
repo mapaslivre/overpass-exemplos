@@ -2,5 +2,5 @@ Exemplo de linha 1
 Exemplo de linha 2
 Texto para pesquisa
 Mais uma linha de exemplo
-Lombada
+Lombada.txt
 lombada no Brasil
