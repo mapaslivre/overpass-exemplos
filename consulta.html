@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caixa de Pesquisa</title>
+    <title>Pesquisa na Página</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,44 +20,57 @@
             border-radius: 5px 0 0 5px;
             width: 200px;
         }
-        .search-button {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-        }
-        .search-button:hover {
-            background-color: #575757;
-        }
         .results {
             margin-top: 20px;
+        }
+        .result-item {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-    <h2>Caixa de Pesquisa</h2>
+    <h2>Pesquisa de Texto na Página</h2>
     <div class="search-container">
-        <input type="text" class="search-box" id="searchInput" placeholder="Digite sua pesquisa..." />
-        <button class="search-button" onclick="search()">Pesquisar</button>
+        <input type="text" class="search-box" id="searchInput" placeholder="Digite sua pesquisa..." onkeyup="searchText()" />
     </div>
 
-    <div class="results" id="results"></div>
+    <div class="results" id="results">
+        <div class="result-item">Exemplo de texto 1: Aprendendo HTML.</div>
+        <div class="result-item">Exemplo de texto 2: Aprendendo CSS.</div>
+        <div class="result-item">Exemplo de texto 3: Aprendendo JavaScript.</div>
+        <div class="result-item">Exemplo de texto 4: Pesquisando dentro da página.</div>
+        <div class="result-item">Exemplo de texto 5: Dicas de programação.</div>
+    </div>
 
     <script>
-        function search() {
-            const query = document.getElementById('searchInput').value;
-            fetch(`search.php?query=${encodeURIComponent(query)}`)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('results').innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
+        function searchText() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.result-item');
+            let hasResults = false;
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(input) && input) {
+                    item.style.display = '';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (!hasResults) {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<div>Nenhum resultado encontrado.</div>';
+            } else {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '';
+                items.forEach(item => {
+                    if (item.style.display !== 'none') {
+                        resultsDiv.appendChild(item);
+                    }
                 });
+            }
         }
     </script>
 
