@@ -1,0 +1,6 @@
+[out:csv(::lat,::lon;false)];
+relation(6728746);
+>;
+out body;
+>;
+out skel qt;
