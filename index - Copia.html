@@ -119,6 +119,8 @@
 
 
 
+
+
                   cONSULTAS overpass TURBO</div>
               </div>
               <h1 class="display-1 margin-bottom-15">+100 Consultas
@@ -126,6 +128,8 @@
                 <span class="underline">Exemplos</span>. </h1>
               <div class="paragraph-wrapper">
                 <div class="paragraph-large margin-bottom-45">Overpass-turbo
+
+
 
 
 
@@ -187,6 +191,8 @@ href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf"
 
 
 
+
+
                     Overpass-turbo<br>
                   </div>
                 </div>
@@ -222,6 +228,8 @@ src="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/fonts/uEj5zrMuM
 node["barrier"="toll_booth"]["charge"](area.searchArea);
 );
 out
+
+
 
 
 
@@ -266,10 +274,14 @@ out
 
 
 
+
+
                         body; &gt;; out skel qt; <br>
                         <br>
                       </font>
                       <div align="center"><font color="#000000"> <b>L</b><b>ink
+
+
 
 
 
@@ -308,6 +320,8 @@ href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">Cliq
 
 
 
+
+
                           Aqui</a></b><br>
                     </div>
                   </div>
@@ -332,6 +346,8 @@ src="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/fonts/uEj5zrMuM
                       connection with its target audience.<br>
                       <a moz-do-not-send="true"
 href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">&nbsp;&nbsp;
+
+
 
 
 
@@ -408,6 +424,8 @@ href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">Baix
 
 
 
+
+
             Codigo Overpass</a></b></font></p>
     <p align="center"><font color="#ff0000"><b><font size="+3"><b>Baixar
               Lista Completa de consulta Overpass Exemplo</b></font></b></font></p>
@@ -416,9 +434,13 @@ href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">Baix
                   href="consultas-overpass/lombadas/consulta_lombada_no_brasil.pdf">lista
 
 
+
+
                   em .zip</a>&nbsp;&nbsp; &nbsp; &nbsp; <a
                   moz-do-not-send="true"
 href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">lista
+
+
 
 
                   em bloco de notas </a></font><br>
@@ -446,6 +468,8 @@ href="consultas-overpass/lombadas/consulta_pedagio_com_tarifa_brasil_1.pdf">list
     </table>
     <p align="center"><font color="#ff0000"><b><font size="+3"><b><br>
               <a moz-do-not-send="true" href="consultasoverpass.html">Consulta
+
+
                 completa</a><br>
             </b></font> </b></font></p>
     <p align="center"><br>
@@ -744,9 +768,63 @@ href="https://drive.google.com/file/d/14rB3kd--ZOcu8-VLdk1LUspOlDvcKY23/view?usp
 
 
 
-                </a><br>
-                <br>
-              </p>
+
+
+
+
+
+
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width,
+                    initial-scale=1.0">
+                  <title>Consulta de Arquivos</title>
+                  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+    </style>
+                </a></p>
+              <h1><a moz-do-not-send="true"
+                  href="raphael@umbraosm.com.br">Buscar Arquivos</a></h1>
+              <a moz-do-not-send="true" href="raphael@umbraosm.com.br">
+                <input id="searchBox" placeholder="Digite para
+                  pesquisar..." type="text">
+                <ul id="fileList">
+                  <li>Documento1.pdf</li>
+                  <li>Apresentação.pptx</li>
+                  <li>Relatório.docx</li>
+                  <li>Imagem.jpg</li>
+                  <li>Tabela.xlsx</li>
+                </ul>
+                <script>
+    document.getElementById('searchBox').addEventListener('input', function() {
+        let filter = this.value.toLowerCase();
+        let fileList = document.getElementById('fileList');
+        let files = fileList.getElementsByTagName('li');
+
+        for (let i = 0; i < files.length; i++) {
+            let fileName = files[i].textContent || files[i].innerText;
+            if (fileName.toLowerCase().includes(filter)) {
+                files[i].style.display = '';
+            } else {
+                files[i].style.display = 'none';
+            }
+        }
+    });
+</script> </a><br>
+              <br>
               <div class="navbar-button-wrapper"> <a
                   href="https://facebook.com/Arun78278" class="button-sc
                   w-inline-block">
