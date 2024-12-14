@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0">
+    <title>Layout com 2 Iframes</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh; /* Altura total da janela */
+        }
+
+        /* Contêiner de colunas */
+        .iframe-container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Estilo das colunas */
+        .iframe-column {
+            flex: 1; /* Divide o espaço igualmente entre as colunas */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Estilo dos iframes */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="iframe-container">
+      <!-- Coluna 1 com iframe -->
+      <div class="iframe-column"> <iframe src="https://example.com"
+          title="Iframe 1"></iframe> </div>
+      <!-- Coluna 2 com iframe -->
+      <div class="iframe-column"> <iframe src="https://example.org"
+          title="Iframe 2"></iframe> </div>
+    </div>
+  </body>
+</html>
