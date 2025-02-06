@@ -68,28 +68,26 @@
     </style>
     <ul class="menu">
       <li><a href="#home"><img moz-do-not-send="true"
-            src="images/logo-overpass.png" alt="logo" width="204"
-            height="57" border="0"></a><b><a href="index.html"
+            src="images/logo-overpass.png" alt="logo" height="57"
+            width="204" border="0"></a><b><a href="index.html"
             moz-do-not-send="true">INICIO</a></b></li>
       <b> </b>
-      <li><b><a href="http://overpass-turbo.eu/s/vUY"
-            moz-do-not-send="true">CONSULTA&nbsp; "LIMITES ÁREA" <br>
-          </a></b></li>
+      <li><a moz-do-not-send="true" href="consultadearea.html"><b>CONSULTA&nbsp;
+
+
+            "LIMITES ÁREA" <br>
+          </b></a></li>
       <b> </b>
-      <li><b><a href="http://overpass-turbo.eu/s/vUY"
-            moz-do-not-send="true">CONSULTA "POI´S"</a></b></li>
+      <li><b><a href="consultadepois.html" moz-do-not-send="true">CONSULTA
+
+
+            "POI´S"</a></b></li>
       <b> </b>
-      <li><b><a href="http://overpass-turbo.eu/s/vUY"
-            moz-do-not-send="true">CONSULTA VIAS RESIDENCIAL&nbsp; </a></b><b><a
-href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/modelopesquisaoverpass%20-%20Copia.html#contato">CONSULTA
+      <li><b><a href="consultadevias.html" moz-do-not-send="true">CONSULTA
+            "VIAS" &nbsp; </a></b><b><a
+            href="consultadeviassemcep.html" moz-do-not-send="true">CONSULTA
 
-
-
-
-
-
-
-            VIA SEM CEP</a></b></li>
+            "VIA SEM CEP"</a></b></li>
     </ul>
     <div align="center">
       <meta charset="UTF-8">
@@ -171,8 +169,8 @@ href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/modelopesquisa
         .btn:hover {
             background-color: #0056b3;
         }</style><font size="+3">&nbsp;&nbsp;<img moz-do-not-send="true"
-          src="images/Overpass-turbo.svg.png" alt="LOGO" width="62"
-          height="62">&nbsp;<font color="#ff0000"> <b>Consultas <font
+          src="images/Overpass-turbo.svg.png" alt="LOGO" height="62"
+          width="62">&nbsp;<font color="#ff0000"> <b>Consultas <font
               color="#000000">Overpass-Turbo</font> <font
               color="#000099"><font color="#ff0000">"</font>Exemplos</font>"&nbsp;</b></font>
       </font><br>
@@ -265,35 +263,78 @@ href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/modelopesquisa
       <!-- Primeira Coluna: Texto -->
       <div class="column text-column">
         <h3 align="center"><font size="+2" color="#ff0000">Consulta <font
-              color="#000099">"Limite Áreas"&nbsp;</font> </font><br>
-        </h3>
-        <ol>
-          <li><a moz-do-not-send="true"
-              href="http://overpass-turbo.eu/s/vUY"><b>Consulta Limite
-                Estadual&nbsp;&nbsp; </b></a><b><br>
-            </b> </li>
-          <b> </b>
+              color="#000000">"Limite Áreas"&nbsp;</font> </font></h3>
+        <p><br>
+          <font size="+1"><b><font size="+2" color="#000000"><font
+                  color="#000000"><a moz-do-not-send="true"
+                    href="http://overpass-turbo.eu/s/vUY">Consulta&nbsp;
+                    Limite de Área</a></font><br>
+              </font></b></font></p>
+        <p><br>
+        </p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><font
+                  size="+1"><br>
+                </font></font></b></font></p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><font
+                  size="+1"><br>
+                </font></font></b></font></p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><font
+                  size="+1"><br>
+                </font></font></b></font></p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><font
+                  size="+1"><br>
+                  <br>
+                </font></font></b></font></p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><font
+                  size="+1">Essa pesquisa overpass e feita onde o mapa
+                  do openstreetmap estiver aberto no overpass; </font><br>
+              </font></b></font></p>
+        <p><font color="#000000">[out:xml]/*fixed by auto
+            repair*/[bbox:{{bbox}}][timeout:800];<br>
+            <br>
+            // determine set of police stations<br>
+            (<br>
+            &nbsp; node[amenity=police];<br>
+            &nbsp; way[amenity=police];<br>
+            &nbsp; rel[amenity=police];<br>
+            )-&gt;.polices; // put them into the set "polices"<br>
+            (._;&gt;;); out meta;/*fixed by auto repair*/</font><font
+            size="+1"><b><font size="+2" color="#000000"><br>
+                <a moz-do-not-send="true"
+                  href="https://overpass-turbo.eu/s/1YhU"><font
+                    size="+1">https://overpass-turbo.eu/s/1YhU</font></a><br>
+              </font></b></font></p>
+        <p><font size="+1"><b><font size="+2" color="#000000"><br>
+              </font></b></font></p>
+        <p><br>
+        </p>
+        <p><br>
+          <br>
+        </p>
+        <ul>
+          <li> <br>
+          </li>
           <li><b><a moz-do-not-send="true"
                 href="http://overpass-turbo.eu/s/vUY">Consulta Limite
                 Municipal</a> </b><b><br>
             </b> </li>
-          <b> </b>
           <li><a moz-do-not-send="true"
               href="http://overpass-turbo.eu/s/vUY"><b>Consulta Limite
                 de Bairro </b></a><b><br>
             </b> </li>
-          <b> </b>
           <li><b>Consulta Postos de Saúde&nbsp;</b></li>
-        </ol>
-        <ol>
-          <b> </b>
           <li><b>Consulta Limite de Floresta <br>
             </b></li>
           <li><b>Consulta Limite&nbsp;</b></li>
+        </ul>
+        <ol>
         </ol>
         <p><br>
         </p>
         <p align="center"><font size="+2"><b><font color="#ff0000"><u>Consulta
+
+
+
 
 
 
@@ -323,6 +364,9 @@ href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/modelopesquisa
 
 
 
+
+
+
                   </font></u></font></b></font><br>
           <font size="+2"><b><font color="#ff0000"><u><font
                     color="#000099"> &amp; Pádagios"</font></u></font></b></font><br>
@@ -335,78 +379,98 @@ href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/modelopesquisa
       <!-- Segunda Coluna: Texto -->
       <div class="column text-column">
         <h3 align="center"><font size="+2" color="#ff0000">Consulta <font
-              color="#000099">"<u>POI´S</u>"</font></font></h3>
+              color="#000000">"<u>POI´S</u>"</font></font></h3>
         <ol>
-          <li><b><a moz-do-not-send="true"
-                href="http://overpass-turbo.eu/s/vUY">Consulta&nbsp; Rua
-                Residencial Escolas </a></b><br>
-          </li>
-          <li><b>Consulta&nbsp; Estrada Rural</b>&nbsp; </li>
-          <li>Consulta&nbsp; Ruas sem Nomes </li>
         </ol>
-        <p><br>
-        </p>
+        <div align="center"><font size="+1"><b><font size="+2"><a
+                  moz-do-not-send="true"
+                  href="http://overpass-turbo.eu/s/vUY">Consulta Escolas
+                </a></font><br>
+              <br>
+            </b></font><b>[out:json][timeout:25];<br>
+            // fetch area Recife to search in<br>
+            {{geocodeArea:Recife}}-&gt;.searchArea;<br>
+            // gather results<br>
+            (<br>
+            &nbsp; // query part for: amenity=school<br>
+            &nbsp; node["amenity"="school"](area.searchArea);<br>
+            &nbsp; way["amenity"="school"](area.searchArea);<br>
+            &nbsp; relation["amenity"="school"](area.searchArea);<br>
+            );<br>
+            // print results<br>
+            out body;<br>
+            &gt;;<br>
+            out skel qt;</b><font size="+1"><b><br>
+            </b></font><b><a moz-do-not-send="true"
+              href="https://overpass-turbo.eu/s/1YhM">https://overpass-turbo.eu/s/1YhM</a></b><font
+            size="+1"><b><br>
+              <br>
+            </b></font><br>
+          <font size="+1"><b><font size="+1"><b><font size="+2"
+                    color="#000000"><a moz-do-not-send="true"
+                      href="http://overpass-turbo.eu/s/vUY">Consulta
+                      Igreja</a><br>
+                  </font></b></font></b></font><b><b><font
+                color="#000000">[out:json][timeout:25];<br>
+                // fetch area Recife to search in<br>
+                {{geocodeArea:Recife}}-&gt;.searchArea;<br>
+                // gather results<br>
+                (<br>
+                &nbsp; // query part for: amenity=place_of_worship<br>
+                &nbsp;
+                node["amenity"="place_of_worship"](area.searchArea);<br>
+                &nbsp;
+                way["amenity"="place_of_worship"](area.searchArea);<br>
+                &nbsp;
+                relation["amenity"="place_of_worship"](area.searchArea);<br>
+                );<br>
+                // print results<br>
+                out body;<br>
+                &gt;;<br>
+                out skel qt;</font></b></b><font size="+1"><b><font
+                size="+1"><b><font size="+2" color="#000000"><br>
+                    <a moz-do-not-send="true"
+                      href="https://overpass-turbo.eu/s/1YhS"><font
+                        size="+1">https://overpass-turbo.eu/s/1YhS</font></a><br>
+                  </font></b></font></b></font><br>
+        </div>
         <p align="center"><font size="+2"><b><font color="#ff0000"><u>Consulta
 
 
 
-                  <font color="#000099">"Lombadas <br>
-                    &amp; Pádagios"</font></u><font color="#000099"> <br>
-                </font></font></b></font></p>
-        <ol>
-          <li>Consulta&nbsp; Rua sem nome em uma cidade&nbsp; </li>
-          <li>Consulta&nbsp; Rua sem CEP&nbsp; </li>
-          <li>Consulta&nbsp; Rua Residencial </li>
-          <li>Consulta&nbsp; Rua Residencial&nbsp; </li>
-          <li>Consulta&nbsp; Rua Residencial&nbsp; </li>
-          <li>Consulta&nbsp; Rua Residencial </li>
-          <li>Consulta&nbsp; Rua Residencial</li>
-        </ol>
-        <p><br>
-        </p>
-        <p align="center"><font size="+2"><b><font color="#ff0000"><u>Consulta
 
 
 
                   <font color="#000099">"Lombadas <br>
-                    &amp; Pádagios"</font></u></font></b></font></p>
-        <ol>
-        </ol>
-        <p><br>
-        </p>
-      </div>
-      <!-- Terceira Coluna: Imagem, Link e Botão -->
-      <div class="column image-column"><img moz-do-not-send="true"
-          src="images/Overpass-turbo.svg.png" alt="logo" width="68"
-          height="68">
-        <h3><font size="+2" color="#000099">Lista completa de consulta
-            Overpass-Turbo <font color="#ff0000"><font color="#000000">"</font>Exemplos<font
-                color="#000000">"</font></font></font><br>
-        </h3>
-        <h3><font color="#ff0000"><font color="#000000">Baixe todas as
-              consultas em Diversos Formatos,</font> <font
-              color="#000099">.pdf, .txt, .doc</font> <br>
-          </font></h3>
-        <font color="#ffffff"><b><a
-              href="mailto:contato@umbraosm.com.br" class="button"
-              moz-do-not-send="true">Download .PDF </a></b><br>
-          <br>
-          <b><font color="#ffcc66"><a
-                href="mailto:contato@umbraosm.com.br" class="button"
-                moz-do-not-send="true">Download .TXT </a></font><br>
-            <br>
-          </b></font><b><font color="#ffffff"><a
-              href="mailto:contato@umbraosm.com.br" class="button"
-              moz-do-not-send="true">Download .DOCX</a></font><br>
-          <br>
-        </b><br>
-        <b><b><font size="+2">Wiki Overpass-turbo</font><br>
-          </b><a
-            href="https://wiki.openstreetmap.org/wiki/Overpass_turbo"><img
-              moz-do-not-send="true" src="images/logo-overpass.png"
-              alt="logo" width="365" height="100" border="0"></a> </b><br>
+                    &amp; Pádagios"</font></u><font color="#000099">&nbsp;</font></font></b></font></p>
         <br>
-        <div align="center"><br>
+      </div>
+      <!-- Terceira Coluna: Imagem, Link e Botão --><b></b><br>
+      <div class="column image-column">
+        <div align="center">
+          <div align="center"><font size="+1"><b><font size="+2"
+                  color="#000000"><br>
+                  <font color="#000000"><a moz-do-not-send="true"
+                      href="http://overpass-turbo.eu/s/vUY">Consulta Via
+                      Residencial </a><br>
+                    <a moz-do-not-send="true"
+                      href="http://overpass-turbo.eu/s/vUY">sem Nome </a></font></font><br>
+                <br>
+              </b></font><b>[out:xml][timeout:25];<br>
+              <br>
+              {{geocodeArea:areias,recife}}-&gt;.searchArea;<br>
+              <br>
+              (<br>
+              &nbsp;
+              way["highway"="residential"]["name"!~".*"](area.searchArea);<br>
+              );<br>
+              <br>
+              out meta;<br>
+              &gt;;<br>
+              out meta qt; </b><font size="+1"><b><br>
+                <a moz-do-not-send="true"
+                  href="https://overpass-turbo.eu/s/1YhT">https://overpass-turbo.eu/s/1YhT</a><br>
+              </b></font></div>
         </div>
       </div>
       <br>
@@ -489,7 +553,7 @@ margin-bottom: 20px;
       <div class="column text-image">
         <h3><a href="https://overpass-turbo.eu/"><img
               moz-do-not-send="true" src="images/logo-overpass.png"
-              alt="logo" width="230" height="92" border="0"></a></h3>
+              alt="logo" height="92" width="230" border="0"></a></h3>
         <h3>Overpass turbo <a moz-do-not-send="true"
             href="https://overpass-turbo.eu/">(overpass-turbo.eu</a>) é
           uma ferramenta de mineração de dados baseada na web para
@@ -509,11 +573,12 @@ margin-bottom: 20px;
           <font color="#ff0000"><b>Edição suíça:</b></font> <b><a
               moz-do-not-send="true"
               href="https://overpass-turbo.osm.ch">https://overpass-turbo.osm.ch</a></b></p>
-        <p><u><font size="+2" color="#000099"><b>Executando consultas<br>
+        <p><u><font size="+2" color="#000099"><b><font color="#000000">Executando
+                  consultas</font><br>
               </b></font></u></p>
         <p><img moz-do-not-send="true"
             src="images/consulta%20overpass%20turbo.png" alt="logo"
-            width="357" height="286"></p>
+            height="286" width="357"></p>
         <p>Coloque sua consulta da <b>API Overpass&nbsp;</b> no editor,
           clique no botão Executar e surpreenda-se com a qualidade dos
           dados OSM exibidos ;)<br>
@@ -532,18 +597,33 @@ margin-bottom: 20px;
           pois é muito poderosa na filtragem de dados OSM. <br>
           Com o overpass turbo, há uma maneira fácil de executar
           rapidamente qualquer consulta Overpass e inspecionar os
-          resultados de uma maneira amigável.</p>
-        <br>
-        <div align="left"><br>
-        </div>
+          resultados de uma maneira amigável.<br>
+        </p>
         <br>
       </div>
       <div class="column download-buttons">
         <h3 align="center"><br>
         </h3>
-        <h3 align="center"><font color="#ff0000">Aqui estão algumas
-            ideias em que usar o<font color="#000000"> "overpass-turbo"</font>
-            pode ser uma ferramenta útil durante o mapeamento:</font><br>
+        <h3><font size="+2">Lista completa de consulta Overpass-Turbo</font><br>
+        </h3>
+        <h3><font color="#ff0000"><font color="#000000">Baixe todas as
+              consultas em Diversos Formatos</font> <font
+              color="#000099">.odt .pdf, .zip</font> <br>
+          </font></h3>
+        <font color="#ffffff"><b><a
+              href="mailto:contato@umbraosm.com.br" class="button"
+              moz-do-not-send="true">Download .pdf </a></b><br>
+          <br>
+          <b><font color="#ffcc66"><a
+href="file:///home/raphael/overpass-exemplos/downloads/consultaoverpass.v.1.odt"
+                class="button" moz-do-not-send="true">Download .odt</a></font><br>
+            <br>
+          </b></font><b><font color="#ffffff"><a
+href="file:///home/raphael/overpass-exemplos/downloads/consultaoverpassv1.zip"
+              class="button" moz-do-not-send="true">Download .zip</a></font></b>
+        <h3 align="center">Aqui estão algumas ideias em que usar o
+          "overpass-turbo" pode ser uma ferramenta útil durante o
+          mapeamento:<br>
         </h3>
         <p align="center"> Procurando por erros de ortografia (raros) ou
           quebras com convenções de nomenclatura em uma grande área.<br>
@@ -569,32 +649,28 @@ margin-bottom: 20px;
           existiria.<br>
           <a href="https://overpass-turbo.eu/"><img
               moz-do-not-send="true" src="images/Overpass-turbo.svg.png"
-              alt="logo" width="117" height="117" border="0"></a><br>
+              alt="logo" height="117" width="117" border="0"></a><br>
         </p>
         <p align="center"><b><i><font size="+1" color="#ff0000">Fonte:</font></i>
             <a moz-do-not-send="true"
               href="https://wiki.openstreetmap.org/wiki/Overpass_turbo">https://wiki.openstreetmap.org/wiki/Overpass_turbo</a>
           </b><br>
         </p>
-        <h3>Baixe a Consulta Overpass-turbo <font color="#ff0000">"
-            Exemplo"</font> em Diversos Formatos</h3>
-        <a href="documento.pdf" download="documento.pdf">Download PDF</a>
-        <a href="documento.docx" download="documento.docx">Download DOCX</a>
-        <a href="documento.csv" download="documento.csv">Download CSV</a>
-        <a href="documento.zip" download="documento.zip">Download ZIP</a>
-      </div>
+        <h3><br>
+        </h3>
+        &nbsp; </div>
     </div>
     <div align="center"><b><font size="+2" color="#000099">Wiki
           Overpass-turbo</font><br>
         <br>
       </b><a href="https://wiki.openstreetmap.org/wiki/Overpass_turbo"><img
           moz-do-not-send="true" src="images/logo-overpass.png"
-          alt="logo" width="365" height="100" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+          alt="logo" height="100" width="365" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
         href="https://t.me/OSMBrasil_Comunidade/1"> </a><a
         href="https://overpass-turbo.eu/"></a><a
         href="https://overpass-turbo.eu/"><img moz-do-not-send="true"
-          src="images/Overpass-turbo.svg.png" alt="logo" width="117"
-          height="117" border="0"> </a><br>
+          src="images/Overpass-turbo.svg.png" alt="logo" height="117"
+          width="117" border="0"> </a><br>
       <br>
       <a href="https://overpass-turbo.eu/"></a><br>
     </div>
@@ -624,6 +700,9 @@ href="file:///C:/Users/Raphael/Documents/GitHub/overpass-exemplos/raphael@umbrao
           none; padding: 10px 20px; cursor: pointer; border-radius:
           5px;"
           onclick="window.location.href='mailto:seuemail@exemplo.com'">Entre
+
+
+
 
 
 
