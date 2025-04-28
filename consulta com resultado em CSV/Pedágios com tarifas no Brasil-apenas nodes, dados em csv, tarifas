@@ -1,0 +1,12 @@
+Pedágios com tarifas no Brasil (apenas nodes, dados em csv, tarifas):
+
+[out:csv(::lon,::lat,"charge","barrier",::type,::id)][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+  node["barrier"="toll_booth"]["charge"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+Link para consulta no Overpass http://overpass-turbo.eu/s/HNW

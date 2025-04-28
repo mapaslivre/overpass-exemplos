@@ -1,0 +1,18 @@
+Localiza polícias rodoviárias com a tag police=traffic_police (as áreas foram transformadas em center):
+
+
+[out:json][timeout:100];
+
+{{geocodeArea:brasil}}->.searchArea;
+
+(
+ node["police"="traffic_police"](area.searchArea);
+  way["police"="traffic_police"](area.searchArea);
+  relation["police"="traffic_police"](area.searchArea);
+);
+
+out center;
+
+
+Consulta no site do overpass http://overpass-turbo.eu/s/CMw
+

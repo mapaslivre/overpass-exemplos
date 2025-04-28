@@ -1,24 +1,18 @@
-Lombadas no Brasil (apenas nodes, gera dados csv para criar alertas no Garmin):
+1. Lombadas no Brasil (apenas nodes, gera dados csv para criar alertas no Garmin):
 
 [out:csv(::lon,::lat,::type)][timeout:900];
-
 {{geocodeArea:Brasil}}->.searchArea;
 
 (
-
-  node["traffic_calming"="bump"](area.searchArea);    
-
+  node["traffic_calming"="bump"](area.searchArea);     
   node["traffic_calming"="hump"](area.searchArea);
-
   node["traffic_calming"="table"](area.searchArea);
-
 );
 
 out body;
-
 >;
-
 out skel qt;
 
 
-Copie o link no seu navegador: http://overpass-turbo.eu/s/vUY
+Link direto para o Overpass: http://overpass-turbo.eu/s/vUY
+

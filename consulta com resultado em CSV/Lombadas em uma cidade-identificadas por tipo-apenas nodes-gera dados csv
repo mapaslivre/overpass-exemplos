@@ -1,0 +1,15 @@
+Lombadas em uma cidade (identificadas por tipo, apenas nodes, gera dados csv):
+
+[out:csv(::lat,::lon,"traffic_calming")][timeout:900];
+{{geocodeArea:Guaramirim}}->.searchArea;
+(
+  node["traffic_calming"="bump"](area.searchArea);     
+  node["traffic_calming"="hump"](area.searchArea);
+  node["traffic_calming"="table"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+
+Link para consulta no Overpass http://overpass-turbo.eu/s/HNN
