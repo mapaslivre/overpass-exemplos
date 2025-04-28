@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta de Pastas e Arquivos</title>
+  <title>Nomes de Ruas - CNEFE 2022</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,7 +13,6 @@
     }
 
     .container {
-      display: flex;
       width: 80%;
       margin: 20px auto;
       background-color: #fff;
@@ -21,49 +20,39 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .sidebar {
-      width: 25%;
-      padding-right: 20px;
-      border-right: 1px solid #ddd;
-    }
-
-    .content {
-      width: 75%;
-      padding-left: 20px;
-    }
-
-    h1, h2 {
-      color: #333;
-    }
-
-    #map {
-      height: 400px;
-    }
-
     #pastas-lista {
       list-style-type: none;
       padding: 0;
-      margin-top: 20px;
     }
 
     #pastas-lista li {
       margin: 10px 0;
       cursor: pointer;
-      color: #007bff;
-    }
-
-    #pastas-lista li:hover {
-      text-decoration: underline;
     }
 
     #arquivos-lista {
+      margin-top: 20px;
       list-style-type: none;
       padding: 0;
-      margin-top: 20px;
     }
 
-    #arquivos-lista li {
-      margin: 10px 0;
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
     }
 
     input[type="text"] {
@@ -74,95 +63,106 @@
       border: 1px solid #ddd;
       border-radius: 4px;
     }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="sidebar">
-    <h2>Lista de Pastas</h2>
-    <input type="text" id="pesquisa-pasta" placeholder="Pesquisar pasta..." onkeyup="pesquisarPasta()">
+  <h1>Nomes de Ruas - CNEFE 2022</h1>
+  
+  <div>
+    <h2>Pastas</h2>
     <ul id="pastas-lista">
-      <li onclick="mostrarArquivos('pasta1')">Pasta 1</li>
-      <li onclick="mostrarArquivos('pasta2')">Pasta 2</li>
-      <li onclick="mostrarArquivos('pasta3')">Pasta 3</li>
-      <!-- Adicione mais pastas conforme necessário -->
+      <!-- As pastas serão listadas aqui -->
+    </ul>
+
+    <h3>Arquivos da Pasta Selecionada</h3>
+    <input type="text" id="pesquisar-arquivos" placeholder="Pesquisar arquivos..." onkeyup="pesquisarArquivos()">
+    <ul id="arquivos-lista">
+      <!-- Os arquivos serão listados aqui quando uma pasta for clicada -->
     </ul>
   </div>
 
-  <div class="content">
-    <h2>Arquivos da Pasta</h2>
-    <ul id="arquivos-lista">
-      <!-- Arquivos serão carregados aqui -->
-    </ul>
-    
-    <h2>Mapa Interativo</h2>
-    <div id="map"></div>
+  <!-- Botões para download (abaixo da lista de arquivos) -->
+  <div id="download-extras" style="text-align:center; margin-top:30px;">
+    <button onclick="baixarPDF()">📄 Baixar PDF</button>
+    <button onclick="baixarDOC()">📝 Baixar DOC</button>
   </div>
+
 </div>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
 <script>
-  // Definindo o mapa
-  const map = L.map('map').setView([40.730610, -73.935242], 13);  // Nova York como ponto inicial
+const usuarioGitHub = 'mapaslivre';  // Substitua com seu nome de usuário GitHub
+const repositorio = 'nomesderuas-cnefe2022';  // Substitua com o nome do seu repositório
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+// Função para pegar as pastas do repositório
+function carregarPastas() {
+  fetch(`https://api.github.com/repos/${usuarioGitHub}/${repositorio}/contents/`)
+    .then(response => response.json())
+    .then(data => {
+      const pastas = data.filter(item => item.type === 'dir' && item.name !== 'doc');  // Ignora a pasta 'doc'
+      const pastasLista = document.getElementById('pastas-lista');
+      pastasLista.innerHTML = '';  // Limpa a lista existente
 
-  // Função para exibir os arquivos de uma pasta
-  function mostrarArquivos(pasta) {
-    const arquivosLista = document.getElementById('arquivos-lista');
-    arquivosLista.innerHTML = ''; // Limpa os arquivos anteriores
-
-    // Exemplo de arquivos em cada pasta
-    const arquivos = {
-      pasta1: ['Arquivo 1.pdf', 'Arquivo 1.doc'],
-      pasta2: ['Arquivo 2.pdf', 'Arquivo 2.doc'],
-      pasta3: ['Arquivo 3.pdf', 'Arquivo 3.doc'],
-    };
-
-    // Adiciona os arquivos da pasta selecionada
-    arquivos[pasta].forEach(arquivo => {
-      const li = document.createElement('li');
-      li.textContent = arquivo;
-      arquivosLista.appendChild(li);
+      pastas.forEach(pasta => {
+        const li = document.createElement('li');
+        li.textContent = pasta.name;
+        li.onclick = () => carregarArquivos(pasta.path);  // Ao clicar na pasta, carrega os arquivos
+        pastasLista.appendChild(li);
+      });
     });
-  }
+}
 
-  // Função para pesquisar pastas
-  function pesquisarPasta() {
-    const termoFiltro = document.getElementById('pesquisa-pasta').value.toLowerCase();
-    const pastas = document.querySelectorAll('#pastas-lista li');
-    
-    pastas.forEach(pasta => {
-      const nomePasta = pasta.textContent.toLowerCase();
-      if (nomePasta.includes(termoFiltro)) {
-        pasta.style.display = '';
-      } else {
-        pasta.style.display = 'none';
-      }
+// Função para carregar os arquivos de uma pasta
+function carregarArquivos(pasta) {
+  fetch(`https://api.github.com/repos/${usuarioGitHub}/${repositorio}/contents/${pasta}`)
+    .then(response => response.json())
+    .then(data => {
+      const arquivosLista = document.getElementById('arquivos-lista');
+      arquivosLista.innerHTML = '';  // Limpa a lista existente
+
+      data.forEach(item => {
+        if (item.type === 'file') {  // Só arquivos
+          const li = document.createElement('li');
+          li.textContent = item.name;
+          const button = document.createElement('button');
+          button.textContent = `Baixar ${item.name}`;
+          button.onclick = () => window.open(item.download_url, '_blank');
+          li.appendChild(button);
+          arquivosLista.appendChild(li);
+        }
+      });
     });
-  }
+}
 
-  // Exemplo inicial de exibição de arquivos ao carregar
-  mostrarArquivos('pasta1');
+// Função para pesquisar arquivos
+function pesquisarArquivos() {
+  const termoPesquisa = document.getElementById('pesquisar-arquivos').value.toLowerCase();
+  const arquivosLista = document.getElementById('arquivos-lista');
+  const arquivos = arquivosLista.getElementsByTagName('li');
+  
+  for (let i = 0; i < arquivos.length; i++) {
+    const nomeArquivo = arquivos[i].textContent.toLowerCase();
+    if (nomeArquivo.indexOf(termoPesquisa) > -1) {
+      arquivos[i].style.display = '';
+    } else {
+      arquivos[i].style.display = 'none';
+    }
+  }
+}
+
+// Função para baixar o PDF
+function baixarPDF() {
+  window.open('extras/arquivo.pdf', '_blank');
+}
+
+// Função para baixar o DOC
+function baixarDOC() {
+  window.open('extras/arquivo.doc', '_blank');
+}
+
+// Carregar as pastas ao iniciar
+carregarPastas();
 </script>
 
 </body>

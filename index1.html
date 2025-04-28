@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Pastas e Arquivos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      display: flex;
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar {
+      width: 25%;
+      padding-right: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .content {
+      width: 75%;
+      padding-left: 20px;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    #map {
+      height: 400px;
+    }
+
+    #pastas-lista {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    #pastas-lista li {
+      margin: 10px 0;
+      cursor: pointer;
+      color: #007bff;
+    }
+
+    #pastas-lista li:hover {
+      text-decoration: underline;
+    }
+
+    #arquivos-lista {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    #arquivos-lista li {
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <h2>Lista de Pastas</h2>
+    <input type="text" id="pesquisa-pasta" placeholder="Pesquisar pasta..." onkeyup="pesquisarPasta()">
+    <ul id="pastas-lista">
+      <li onclick="mostrarArquivos('pasta1')">Pasta 1</li>
+      <li onclick="mostrarArquivos('pasta2')">Pasta 2</li>
+      <li onclick="mostrarArquivos('pasta3')">Pasta 3</li>
+      <!-- Adicione mais pastas conforme necessário -->
+    </ul>
+  </div>
+
+  <div class="content">
+    <h2>Arquivos da Pasta</h2>
+    <ul id="arquivos-lista">
+      <!-- Arquivos serão carregados aqui -->
+    </ul>
+    
+    <h2>Mapa Interativo</h2>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+  // Definindo o mapa
+  const map = L.map('map').setView([40.730610, -73.935242], 13);  // Nova York como ponto inicial
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Função para exibir os arquivos de uma pasta
+  function mostrarArquivos(pasta) {
+    const arquivosLista = document.getElementById('arquivos-lista');
+    arquivosLista.innerHTML = ''; // Limpa os arquivos anteriores
+
+    // Exemplo de arquivos em cada pasta
+    const arquivos = {
+      pasta1: ['Arquivo 1.pdf', 'Arquivo 1.doc'],
+      pasta2: ['Arquivo 2.pdf', 'Arquivo 2.doc'],
+      pasta3: ['Arquivo 3.pdf', 'Arquivo 3.doc'],
+    };
+
+    // Adiciona os arquivos da pasta selecionada
+    arquivos[pasta].forEach(arquivo => {
+      const li = document.createElement('li');
+      li.textContent = arquivo;
+      arquivosLista.appendChild(li);
+    });
+  }
+
+  // Função para pesquisar pastas
+  function pesquisarPasta() {
+    const termoFiltro = document.getElementById('pesquisa-pasta').value.toLowerCase();
+    const pastas = document.querySelectorAll('#pastas-lista li');
+    
+    pastas.forEach(pasta => {
+      const nomePasta = pasta.textContent.toLowerCase();
+      if (nomePasta.includes(termoFiltro)) {
+        pasta.style.display = '';
+      } else {
+        pasta.style.display = 'none';
+      }
+    });
+  }
+
+  // Exemplo inicial de exibição de arquivos ao carregar
+  mostrarArquivos('pasta1');
+</script>
+
+</body>
+</html>
+
