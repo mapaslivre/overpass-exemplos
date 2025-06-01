@@ -1,0 +1,11 @@
+//COnsulta de nome de Avenida em uma cidade, aqui você pode mudar o nome da cidade {{geocodeArea:Belém,PA}} para uma outra cidade e aqui o nome da Avenida [name~"^Avenida"] que pode ser uma Rua com outro nome, fica a seu criterio modificar os dados da consulta.
+
+[out:xml][timeout:25];
+
+{{geocodeArea:Belém,PA}}->.searchArea;
+way[highway][name~"^Avenida"] (area.searchArea);
+(._; >;);
+out geom;
+{{style:
+    way [highway] {text: eval("tag('name') . ' (' . tag('highway') . ')'")}
+}}

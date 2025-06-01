@@ -1,0 +1,13 @@
+//pesquisa todas as ruas Rural ou local sem CEP em uma area com os dados da relação mapeada no OSM,  
+
+[out:xml][timeout:25];
+
+area(3606188367) ->.searchArea;
+
+(
+  way["highway"="unclassified"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

@@ -1,0 +1,23 @@
+17. Radares em Jaraguá, exibe a velocidade do radar com cores e labels (node/way/relation, mapa, gpx, kml):
+[boa para fazer a verificação visual e identificar erros]
+
+[out:json][timeout:900];
+{{geocodeArea:Jaragua do Sul}}->.searchArea;
+(
+  node["highway"="speed_camera"](area.searchArea);
+  way["highway"="speed_camera"](area.searchArea);
+  relation["highway"="speed_camera"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+{{style:
+node[maxspeed]{
+  text: maxspeed;
+  color:green;
+}
+}}
+
+Consulta site overpass: http://overpass-turbo.eu/s/HOt
+

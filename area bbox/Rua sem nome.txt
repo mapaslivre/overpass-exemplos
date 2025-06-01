@@ -1,0 +1,9 @@
+//Consulta de Ruas sem nome em uma area que você escolheu diretamente no Editor JOSM 
+
+[out:xml]/*fixed by auto repair*/[timeout:250];
+( 
+way["highway"="residential"]["name"!~"."]({{bbox}});
+);
+out meta;/*fixed by auto repair*/
+>;
+out meta qt;/*fixed by auto repair*/

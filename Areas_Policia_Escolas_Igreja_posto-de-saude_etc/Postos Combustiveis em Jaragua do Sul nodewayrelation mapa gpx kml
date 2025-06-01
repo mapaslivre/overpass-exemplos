@@ -1,0 +1,14 @@
+18. Postos Combustíveis em Jaraguá do Sul (node/way/relation, mapa, gpx, kml):
+[transforma áreas/polígonos em centros geométricos “center”]
+
+[out:json][timeout:100];
+{{geocodeArea:jaragua do sul}}->.searchArea;
+(
+  node["amenity"="fuel"](area.searchArea);
+  way["amenity"="fuel"](area.searchArea);
+  relation["amenity"="fuel"](area.searchArea);
+);
+out center;
+
+
+Consulta site Overpass: http://overpass-turbo.eu/s/HOv

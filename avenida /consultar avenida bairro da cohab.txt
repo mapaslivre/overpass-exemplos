@@ -1,0 +1,14 @@
+//Consulta Avenidas Terciaria ou o nome "avenida" no Bairro da Cohab, Recife.  
+
+
+[out:xml][timeout:25];
+
+{{geocodeArea:cohab,recife}}->.searchArea;
+
+(
+  way["highway"="tertiary"]["avenida"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

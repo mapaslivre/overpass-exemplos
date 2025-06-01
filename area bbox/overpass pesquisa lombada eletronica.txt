@@ -1,0 +1,14 @@
+// Consulta de Câmera de velocidade em um area visivel no mapa overpass   
+
+[out:json][timeout:50];
+// gather results
+(
+  // query part for: “highway=speed_camera”
+  node["highway"="speed_camera"]({{bbox}});
+  way["highway"="speed_camera"]({{bbox}});
+  relation["highway"="speed_camera"]({{bbox}});
+);
+// print results
+out body;
+>;
+out skel qt;

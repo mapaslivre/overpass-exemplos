@@ -1,0 +1,15 @@
+// Da relação do bairro se consegue o ID:  https://www.openstreetmap.org/relation/4271610 que é 4271610 a ela se soma 3600000000 que dá 3604271610
+
+
+
+[out:xml][timeout:25];
+
+area(3604271610)->.searchArea;
+
+(
+  way["highway"="residential"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

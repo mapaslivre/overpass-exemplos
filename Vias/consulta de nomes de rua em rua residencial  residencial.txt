@@ -1,0 +1,13 @@
+[out:xml][timeout:25];
+
+{{geocodeArea:BAIRRO,recife}}->.searchArea;
+
+(
+  way["highway"="residential"]["name"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;
+
+

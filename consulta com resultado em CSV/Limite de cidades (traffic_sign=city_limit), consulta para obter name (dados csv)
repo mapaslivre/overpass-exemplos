@@ -1,0 +1,14 @@
+12. Limite de cidades (traffic_sign=city_limit), consulta para obter name (dados csv):
+
+[out:csv(::lon,::lat,"traffic_sign","name",::type,::id)][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+  node["traffic_sign"="city_limit"]["name"](area.searchArea);
+  way["traffic_sign"="city_limit"]["name"](area.searchArea);
+  relation["traffic_sign"="city_limit"]["name"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+link site overpass: http://overpass-turbo.eu/s/HOn

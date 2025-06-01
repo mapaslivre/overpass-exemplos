@@ -1,0 +1,62 @@
+// @name Radares com velocidade diferente daquela da via
+
+// Busca trechos de via cuja velocidade máxima mapeada é
+// diferente da velocidade máxima de radar nela mapeado
+
+[out:json][timeout:240];
+
+// Descomente um dos "make" abaixo e comente os outros para escolher entre "bbox"
+// (área visível no mapa), Unidade da Federação ou município especificado no "else".
+
+make var opcao="bbox";
+//make var opcao="Município";
+//make var opcao="UF";
+
+
+if( u(t["opcao"] == "bbox") ) {
+  
+  way [maxspeed]({{bbox}}) -> .ways;
+  
+} else { // AQUI SÃO DEFINIDAS A UNIDADE DA FEDERAÇÃO E SEU MUNICÍPIO
+
+  // SE "opcao" FOR "UF" ou "Município", SUBSTITUA A UNIDADE DA FEDERAÇÃO PELA DE SEU INTERESSE
+  area [name = "Rio Grande do Sul"] [boundary=administrative][admin_level=4]-> .uf;
+  
+  if( u(t["opcao"] == "Município") ) {
+    
+    // SE "opcao" for "Município", SUBSTITUA O MUNICÍPIO PELO DE SEU INTERESSE E
+    // GARANTA QUE A UNIDADE DA FEDERAÇÃO ACIMA SEJA A DELE
+    area [name = "Porto Alegre"] [boundary=administrative][admin_level=8]-> .m;
+    
+    way [maxspeed] (area.m) (area.uf) -> .ways;
+  
+  } else { // Unidade da Federação
+
+    way [maxspeed] (area.uf) -> .ways;
+  }
+}
+
+
+for.ways (t["maxspeed"]) (
+  node(w) [highway=speed_camera] (if:t["maxspeed"] != _.val);
+  out meta;
+  way(bn) -> .ow;
+  .ow out geom;
+);
+
+
+{{style:
+  way[maxspeed]{color: red; text: eval("'Via ' . tag('maxspeed')");}
+  
+  way[!highway] {color: purple; width:3; text: eval("'Radar indevidamente grudado na linha?'");}
+  way:active { color: #A31AF5;}
+
+  node[highway=speed_camera][maxspeed]
+    {color: red; width: 3; text: eval("'Radar ' . tag('maxspeed')");}
+
+  node[highway=speed_camera][!maxspeed]
+    {color: red; width: 3; text: eval("'Radar ?'");}
+
+  node[highway!=speed_camera]{opacity: 0;}
+}}
+

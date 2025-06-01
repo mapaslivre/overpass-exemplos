@@ -1,0 +1,17 @@
+
+15. Radares no Brasil (node/way/relation, mapa, gpx, kml)
+
+[out:json][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+  node["highway"="speed_camera"](area.searchArea);
+  way["highway"="speed_camera"](area.searchArea);
+  relation["highway"="speed_camera"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+
+Consulta site Overpass: http://overpass-turbo.eu/s/HOq
+

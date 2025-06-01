@@ -1,0 +1,16 @@
+Hidrantes adicionados por determinado usuário (node/way/relation, mapa, gpx, kml):
+[emergency=hydrant and user:nnn]
+
+[out:json][timeout:25];
+{{geocodeArea:Santa Catarina}}->.searchArea;
+(
+node["emergency"="fire_hydrant"](user:"Tomio")(area.searchArea);
+way["emergency"="fire_hydrant"](user:"Tomio")(area.searchArea);
+relation["emergency"="fire_hydrant"](user:"Tomio")(area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+
+Consulta site overpass: https://overpass-turbo.eu/s/ApN

@@ -1,0 +1,8 @@
+Obtém os elementos de uma relação node way relation mapa gpx kml
+
+
+[out:json];relation(2081626);out geom;
+
+
+Consulta site Overpass: https://overpass-turbo.eu/s/HPL
+

@@ -1,0 +1,11 @@
+//Consulta de Nome de uma Avenida, para outra cidade é só mudar o nome da cidade e o estado na linha {geocodeArea:vitoria de santo antão,PE}} serve para qualqer nome de Rua, Bairro ou cidade  
+
+[out:xml][timeout:25];
+
+{{geocodeArea:Jardim Ipiranga,vitoria de santo antão,PE}}->.searchArea;
+way[highway][name~"^Rua São Francisco"] (area.searchArea);
+(._; >;);
+out geom;
+{{style:
+    way [highway] {text: eval("tag('name') . ' (' . tag('highway') . ')'")}
+}}

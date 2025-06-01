@@ -1,0 +1,18 @@
+//Consulta nomes de Rua Abreviada 
+
+[out:json][timeout:900];
+{{geocodeArea:rio grande do sul}}->.searchArea;
+(
+  way[highway]["name"~"Av\\.",i](area.searchArea);
+  way[highway]["name"~"Tr\\.",i](area.searchArea);
+  way[highway]["name"~"R\\.",i](area.searchArea);
+  way[highway]["name"~"Dr\\.",i](area.searchArea);
+  way[highway]["name"~"r\\.",i](area.searchArea);
+  way[highway]["name"~"Prof\\.",i](area.searchArea);
+);
+
+out body;
+>;
+out skel qt;
+
+

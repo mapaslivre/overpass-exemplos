@@ -1,0 +1,10 @@
+//Lista de Prefeituras de Pernambuco em formato csv 
+
+[out:csv(::type,::id,postal_code,name,::count)];
+  area[name="Pernambuco"]->.a;
+  ( node(area.a)["amenity"="townhall"];
+    way(area.a)["amenity"="townhall"];
+    rel(area.a)["amenity"="townhall"];
+  );
+  out;
+  out count;

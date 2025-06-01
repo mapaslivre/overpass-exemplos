@@ -1,0 +1,11 @@
+
+[out:json][timeout:250];
+{{geocodeArea:Jaraguá do Sul}}->.searchArea;
+(
+  way["bridge"="yes"]["highway"!~"^(construction|cycleway|footway|path|proposed|service|track)$"]
+  (area.searchArea);
+  );
+out body;
+>;
+out skel qt;
+

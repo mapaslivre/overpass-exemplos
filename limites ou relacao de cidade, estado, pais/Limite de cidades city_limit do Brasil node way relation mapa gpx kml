@@ -1,0 +1,15 @@
+Limite de cidades (city_limit) do Brasil (node/way/relation, mapa, gpx, kml):
+
+[out:json][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+  node["traffic_sign"="city_limit"]["name"](area.searchArea);
+  way["traffic_sign"="city_limit"]["name"](area.searchArea);
+  relation["traffic_sign"="city_limit"]["name"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+
+Consulta site overpass: http://overpass-turbo.eu/s/HOo
