@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tutorial Overpass Turbo - Consultas com key=value</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.7;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #004080;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0055aa;
+    }
+    .dica {
+      background: #e8f5e9;
+      padding: 10px;
+      border-left: 5px solid #4caf50;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tutorial Overpass Turbo: Consultas simples com <code>key=value</code></h1>
+
+  <p>Este tutorial foi criado para ajudar iniciantes a explorar os dados do <strong>OpenStreetMap</strong> usando o <a href="https://overpass-turbo.eu/" target="_blank">Overpass Turbo</a>. O foco é usar consultas simples com a estrutura <code>key=value</code>, que você pode personalizar para buscar qualquer tipo de informação disponível no mapa.</p>
+
+  <h2>1. O que é uma tag <code>key=value</code>?</h2>
+  <p>O OpenStreetMap organiza seus dados usando pares de <strong>chave=valor</strong> (key=value). Por exemplo:</p>
+  <ul>
+    <li><code>amenity=school</code> representa uma escola</li>
+    <li><code>highway=cycleway</code> representa uma ciclovia</li>
+    <li><code>office=government</code> representa uma repartição pública, como uma prefeitura</li>
+  </ul>
+
+  <h2>2. Geometrias no OpenStreetMap</h2>
+  <p>Todo objeto no OSM pode ser de três tipos:</p>
+  <ul>
+    <li><strong><code>node</code></strong>: ponto único, como uma árvore ou paraciclo.</li>
+    <li><strong><code>way</code></strong>: linha ou polígono, como ruas, calçadas, edifícios.</li>
+    <li><strong><code>relation</code></strong>: grupo de elementos, como limites de bairro ou rotas de ônibus.</li>
+  </ul>
+
+  <div class="dica">
+    💡 <strong>Dica:</strong> Se quiser consultar os três tipos ao mesmo tempo, use <code>nwr</code> (abreviação de node, way, relation).
+  </div>
+
+  <h2>3. Estrutura básica com área nomeada</h2>
+  <p>Use essa estrutura para buscar por nome de cidade ou bairro.</p>
+
+  <pre><code>[out:json][timeout:25];
+
+{{geocodeArea:São Paulo}}->.searchArea;
+
+(
+  node["chave"="valor"](area.searchArea);
+  way["chave"="valor"](area.searchArea);
+  relation["chave"="valor"](area.searchArea);
+);
+
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+  <h2>4. Estrutura alternativa com área visível do mapa (bbox)</h2>
+  <p>Essa versão busca os dados apenas na área visível do mapa no Overpass Turbo:</p>
+
+  <pre><code>[out:json][timeout:25];
+
+(
+  node["chave"="valor"]({{bbox}});
+  way["chave"="valor"]({{bbox}});
+  relation["chave"="valor"]({{bbox}});
+);
+
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+  <div class="dica">
+    🔄 <strong>Dica:</strong> Mova o mapa e dê zoom para ajustar a área de busca antes de executar.
+  </div>
+
+  <h2>5. Exemplos práticos</h2>
+
+  <h3>📚 Exemplo: Escolas</h3>
+  <pre><code>nwr["amenity"="school"](area.searchArea);</code></pre>
+
+  <h3>🏥 Exemplo: Hospitais</h3>
+  <pre><code>nwr["amenity"="hospital"](area.searchArea);</code></pre>
+
+  <h3>⛪ Exemplo: Igrejas</h3>
+  <pre><code>nwr["amenity"="place_of_worship"](area.searchArea);</code></pre>
+
+  <h3>🚲 Exemplo: Ciclovias</h3>
+  <pre><code>way["highway"="cycleway"](area.searchArea);</code></pre>
+
+  <h3>🚶 Exemplo: Calçadas</h3>
+  <pre><code>way["footway"="sidewalk"](area.searchArea);</code></pre>
+
+  <h3>🏛️ Exemplo: Prefeitura</h3>
+  <pre><code>nwr["office"="government"](area.searchArea);</code></pre>
+
+  <h3>🗺️ Exemplo: Limites de bairro</h3>
+  <pre><code>relation["admin_level"="10"](area.searchArea);</code></pre>
+
+  <h2>6. Onde encontrar outras tags?</h2>
+  <p>Você pode consultar o site <a href="https://taginfo.openstreetmap.org/" target="_blank">TagInfo</a> para descobrir outras combinações possíveis de <code>key=value</code>.</p>
+
+  <h2>7. Abrir sua consulta no Overpass Turbo</h2>
+  <p>Copie o código gerado e cole em <a href="https://overpass-turbo.eu/" target="_blank">https://overpass-turbo.eu</a>. Depois, clique no botão <strong>“Run”</strong> para ver os dados no mapa.</p>
+
+  <h2>8. Exportar os dados</h2>
+  <p>Você pode exportar os resultados em diversos formatos como:</p>
+  <ul>
+    <li><strong>GeoJSON</strong> – para usar em QGIS ou Leaflet</li>
+    <li><strong>KML</strong> – para Google Earth</li>
+    <li><strong>GPX</strong> – para dispositivos GPS</li>
+  </ul>
+
+  <h2>9. Consultas combinadas</h2>
+  <p>Você pode combinar várias tags no mesmo bloco:</p>
+
+  <pre><code>(
+  nwr["amenity"="school"](area.searchArea);
+  nwr["amenity"="hospital"](area.searchArea);
+);</code></pre>
+
+  <p>Ou fazer filtros adicionais, como buscar escolas que tenham nome:</p>
+  <pre><code>nwr["amenity"="school"]["name"](area.searchArea);</code></pre>
+
+  <div class="dica">
+    🚀 Explore! Quanto mais você pratica, mais entende o poder do Overpass Turbo.
+  </div>
+
+  <p>Este guia foi feito para que qualquer pessoa, mesmo sem experiência anterior, consiga montar suas primeiras consultas. Aproveite!</p>
+
+</body>
+</html>
+
