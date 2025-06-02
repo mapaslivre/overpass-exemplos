@@ -1,0 +1,16 @@
+//Consulta de Parques com endereços na tag "addr:street" na cidade de Recife
+
+[out:json][timeout:25];
+// fetch area “Recife PE” to search in
+{{geocodeArea:Recife PE}}->.searchArea;
+// gather results
+(
+  // query part for: “leisure=park and "addr:street"=*”
+  node["leisure"="park"]["addr:street"](area.searchArea);
+  way["leisure"="park"]["addr:street"](area.searchArea);
+  relation["leisure"="park"]["addr:street"](area.searchArea);
+);
+// print results
+out body;
+>;
+out skel qt;

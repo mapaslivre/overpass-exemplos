@@ -1,0 +1,11 @@
+//Consulta de Nome de Rua Residencial em um bairro, para fazer uma outra consulta para uma outra cidade é só mudar o nome da cidade e o estado na linha {geocodeArea:vitoria de santo antão,PE}} serve para qualqer nome de Rua, Bairro ou cidade.  
+
+[out:xml][timeout:25];
+
+{{geocodeArea:Jardim Ipiranga,vitoria de santo antão,PE}}->.searchArea;
+way[highway=residential][name~"^Rua"] (area.searchArea);
+(._; >;);
+out geom;
+{{style:
+    way [highway] {text: eval("tag('name') . ' (' . tag('highway') . ')'")}
+}}

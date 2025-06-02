@@ -1,0 +1,16 @@
+[out:json][timeout:25];
+// fetch area “Jaragua do Sul” to search in
+{{geocodeArea:Jaragua do Sul}}->.searchArea;
+// gather results
+(
+  // query part for: “ref~/^JGS[…]”
+  node["ref"~"^JGS*"](area.searchArea);
+  way["ref"~"^JGS*"](area.searchArea);
+  relation["ref"~"^JGS*"](area.searchArea);
+);
+// print results
+out body;
+>;
+out skel qt;
+
+

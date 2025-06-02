@@ -1,0 +1,13 @@
+//pesquisa todas as ruas e evenidas sem CEP em uma area com os dados da relação mapeada no OSM 
+
+[out:xml][timeout:25];
+
+area(3604271610) ->.searchArea;
+
+(
+  way["highway"~"unclassified|residential|tertiary|secondary"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

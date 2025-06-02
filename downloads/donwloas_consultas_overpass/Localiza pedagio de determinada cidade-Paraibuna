@@ -1,0 +1,15 @@
+Localiza pedágio de determinada cidade (Paraibuna):
+
+[out:json][timeout:25];
+{{geocodeArea:Paraibuna}}->.searchArea;
+(
+  node["barrier"="toll_booth"](area.searchArea);
+  way["barrier"="toll_booth"](area.searchArea);
+  relation["barrier"="toll_booth"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+
+Link para consulta no overpass http://overpass-turbo.eu/s/HQi

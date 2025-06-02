@@ -1,0 +1,46 @@
+// @name Endereços com addr:street diferente das ruas próximas até 20m
+
+[out:json][timeout:180];
+
+nw ["addr:street"] ({{bbox}}) -> .enderecos;
+
+for.enderecos (t["addr:street"]) {
+  way [highway] (if: t["name"] || t["ref"]) (around:20)
+  (if:
+    t["highway"]  == "residential"    ||
+    t["highway"]  == "living_street"  ||
+    t["highway"]  == "tertiary"       ||
+    t["highway"]  == "tertiary_link"  ||
+    t["highway"]  == "secondary"      ||
+    t["highway"]  == "secondary_link" ||
+    t["highway"]  == "primary"        ||
+    t["highway"]  == "primary_link"   ||
+    t["highway"]  == "trunk"          ||
+    t["highway"]  == "trunk_link"     ||
+    t["highway"]  == "motorway"       ||
+    t["highway"]  == "motorway_link"  ||
+    t["highway"]  == "service"        ||
+    t["highway"]  == "pedestrian"     ||
+    t["highway"]  == "path"
+  ) -> .vias_proximas;
+
+  if (vias_proximas.count(ways) > 0) {
+    (._; .ev;) -> .ev;   // endereços com alguma via nomeada próxima
+  }
+}
+
+for.ev (t["addr:street"]) {
+  way (around:20)
+  (if:
+    t["name"]             == _.val ||
+    t["official_name"]    == _.val ||
+    "Rodovia " + t["ref"] == _.val ||
+//    t["ref"]              == _.val || // addr:street sem "Rodovia"/"Estrada" antes de ref?
+    "Estrada " + t["ref"] == _.val
+  ) -> .street;
+	  
+  if (street.count(ways) == 0) {
+    out geom;
+  }
+}
+

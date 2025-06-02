@@ -1,0 +1,20 @@
+// @name Busca nomes abreviados e/ou de vias em maiúsculas
+// Algumas abreviaturas podem ser aceitáveis, o mapeador decide
+
+[out:json][timeout:180];
+
+// Altere a UF e o município para os desejados
+area ['ISO3166-2' = 'BR-RJ'][admin_level=4] -> .uf;
+area ['name'='Niterói'][admin_level=8] -> .mu;
+
+(
+  // nomes com ponto seguido de espaço e abreviaturas comuns
+  // outras abreviaturas podem ser incluídas
+  nwr [~"(^name$|^.*_name$|addr:street)" ~
+      "([.] |Alm |Av |Cel |Cond |Dr |Dra |Gen |Jd |Pç |Pref |Pq |Pres |Ver |RUA |AVENIDA |RODOVIA |ESTRADA |PRAÇA |JARDIM |ESCOLA |UNIVERSIDADE )"]
+
+    (area.mu)(area.uf);
+);
+
+(._; >;);
+out geom;

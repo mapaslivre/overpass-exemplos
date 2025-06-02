@@ -1,0 +1,16 @@
+//pesquisa ruas residenciais sem CEP no Bairro de "Casa Forte" no raio de 500 metros 
+
+
+[out:json][timeout:25];
+
+{{radius=500}}
+
+(
+
+    way["highway"="residential"]["postal_code"!~"."](around:{{radius}},{{geocodeCoords:Casa forte recife}});
+  
+);
+
+out body;
+>;
+out skel qt;

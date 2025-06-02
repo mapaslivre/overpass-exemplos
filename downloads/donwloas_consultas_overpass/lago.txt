@@ -1,0 +1,8 @@
+
+
+
+[out:json][timeout:25];
+nwr["natural"="water"]({{bbox}});
+out body;
+>;
+out skel qt;

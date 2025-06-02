@@ -1,0 +1,21 @@
+//Consulta Áreas que tem CEP Mapeado e que está mapeado fora do padrão para o Brasil XXXXX-XXX. 
+
+[out:xml][timeout:900];
+{{geocodeArea:pernambuco}}->.searchArea;
+(
+nwr
+["addr:postcode"!~"^[0-9]{5}-[0-9]{3}$"]
+["addr:postcode"!](area.searchArea);
+nwr
+["postal_code"!~"^[0-9]{5}-[0-9]{3}$"]
+["postal_code"!](area.searchArea);
+nwr
+["postal_code:side:even"!~"^[0-9]{5}-[0-9]{3}$"]
+["postal_code:side:even"!](area.searchArea);
+nwr
+["postal_code:side:odd"!~"^[0-9]{5}-[0-9]{3}$"]
+["postal_code:side:odd"!](area.searchArea);
+);
+out meta;
+>;
+out meta qt;

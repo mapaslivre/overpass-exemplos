@@ -1,0 +1,15 @@
+// @name Marcos quilométricos mapeados na via
+
+[out:json][timeout:240];
+
+// Especifique a via
+make var sigla="BR-101";
+
+way [highway] (if: t["ref"] == u(t["sigla"])) ({{bbox}}) -> .via;
+node(w.via) [highway=milestone] ; 
+out;
+
+{{style:
+  node {width:0; opacity:0;}
+  node[highway=milestone] {width: 2; opacity:1;
+    text: eval('"km " . tag("distance") . " " . tag("ref")');}

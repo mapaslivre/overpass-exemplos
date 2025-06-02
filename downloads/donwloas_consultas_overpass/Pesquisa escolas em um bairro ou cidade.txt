@@ -1,0 +1,16 @@
+//Pesquisa escolas em uma cidade ou Bairro. basta alterar o nome da cidade para um bairro que deseja consultar, como por exemplo "Piedade, Jaboatão dos Guararapes" 
+
+[out:json][timeout:25];
+// fetch area “Terceira” to search in
+{{geocodeArea:piedade, jaboatão dos guararapes}}->.searchArea;
+// gather results
+(
+  // query part for: “amenity=school”
+  node["amenity"="school"](area.searchArea);
+  way["amenity"="school"](area.searchArea);
+  relation["amenity"="school"](area.searchArea);
+);
+// print results
+out body;
+>;
+out skel qt;

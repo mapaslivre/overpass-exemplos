@@ -1,0 +1,21 @@
+Lombadas no Brasil (node/way/relation, visualiza no mapa, exporta gpx/kml):
+[bump, hump, table, sem yes]
+
+[out:json][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+  node["traffic_calming"="table"](area.searchArea);
+  way["traffic_calming"="table"](area.searchArea);
+  relation["traffic_calming"="table"](area.searchArea);
+  node["traffic_calming"="hump"](area.searchArea);
+  way["traffic_calming"="hump"](area.searchArea);
+  relation["traffic_calming"="hump"](area.searchArea);
+  node["traffic_calming"="bump"](area.searchArea);
+  way["traffic_calming"="bump"](area.searchArea);
+  relation["traffic_calming"="bump"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+Link para consulta no Overpass http://overpass-turbo.eu/s/HNT

@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+nwr["amenity"="post_office"]({{bbox}});
+out body;
+>;
+out skel qt;
+

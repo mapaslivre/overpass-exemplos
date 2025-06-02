@@ -1,0 +1,16 @@
+
+13. Limite de cidades (city_limit), obtém as coordenadas dos pontos (dados csv)
+
+[out:csv(::lon,::lat,"name")][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+
+(
+  node["traffic_sign"="city_limit"](area.searchArea);     
+);
+
+out body;
+>;
+out skel qt;
+
+Consulta site overpass: http://overpass-turbo.eu/s/AEd
+

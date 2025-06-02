@@ -1,0 +1,13 @@
+//Consulta ruas, rua local ou rural, avenida secundaria e terciaria sem CEP
+
+[out:xml][timeout:25];
+
+area(3604268598) ->.searchArea;
+
+(
+  way["highway"~"unclassified|residential|tertiary|secondary"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

@@ -1,0 +1,20 @@
+//Consulta de IGREJAS no overpass
+
+
+[out:json][timeout:25];
+// fetch area “Recife” to search in
+{{geocodeArea:Recife}}->.searchArea;
+// gather results
+(
+  // query part for: “amenity=place_of_worship”
+  node["amenity"="place_of_worship"](area.searchArea);
+  way["amenity"="place_of_worship"](area.searchArea);
+  relation["amenity"="place_of_worship"](area.searchArea);
+);
+// print results
+out body;
+>;
+out skel qt;
+
+
+//LINK PARA CONSULTA NO OVERPASS http://overpass-turbo.eu/s/CuP

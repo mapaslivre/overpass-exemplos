@@ -1,0 +1,18 @@
+//Estacionamento
+
+Estacionamentos localizados no raio de 1000m de um ponto estabelecido (node/way, mapa, gpx, kml)
+
+(
+node
+     (around:1000,45.80264, 9.09477)
+      ["amenity"="parking"];
+way
+      (around:1000,45.80264, 9.09477)
+      ["amenity"="parking"];
+);
+out body;
+>;
+out skel qt;
+
+
+//Consulta site overpas: http://overpass-turbo.eu/s/HPH

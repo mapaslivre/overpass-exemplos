@@ -1,4 +1,4 @@
-//Localiza polícias rodoviárias com a tag police=traffic_police (as áreas foram transformadas em center):
+Localiza polícias rodoviárias com a tag police=traffic_police (as áreas foram transformadas em center):
 
 
 [out:json][timeout:100];
@@ -14,5 +14,5 @@
 out center;
 
 
-//Consulta no site do overpass http://overpass-turbo.eu/s/CMw
+Consulta no site do overpass http://overpass-turbo.eu/s/CMw
 

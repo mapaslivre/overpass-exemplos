@@ -1,0 +1,9 @@
+[out:xml][timeout:25];
+
+{{geocodeArea:Belém,PA}}->.searchArea;
+way[highway][name~"^Avenida"] (area.searchArea);
+(._; >;);
+out geom;
+{{style:
+    way [highway] {text: eval("tag('name') . ' (' . tag('highway') . ')'")}
+}}

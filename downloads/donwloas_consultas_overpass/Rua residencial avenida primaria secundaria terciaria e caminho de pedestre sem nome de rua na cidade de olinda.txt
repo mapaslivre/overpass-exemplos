@@ -1,0 +1,10 @@
+//Consulta Rua e avenida primaria,secundaria,terciaria e caminho de pedestre sem nome de Rua na cidade de "Olinda" pode alterar o nome da cidade para consulta de outras cidades que esta no estado de pernambuco. 
+
+area ['ISO3166-2' = 'BR-PE'][admin_level=4]-> .uf;
+area [name="Olinda"][admin_level=8]-> .m;
+
+way [highway] [highway~"pedestrian|residential|tertiary|secondary|primary"] [!name] (area .uf) (area .m);
+
+(._; >;);
+out;
+

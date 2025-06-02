@@ -1,0 +1,12 @@
+//Consulta Rua local ou rural sem CEP no bairro do Engenho do Meio, Recife-PE. 
+[out:xml][timeout:25];
+
+{{geocodeArea:Engenho do Meio, Recife }}->.searchArea;
+
+(
+  way["highway"="unclassified"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

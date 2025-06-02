@@ -1,0 +1,13 @@
+[out:json][timeout:25];
+{{geocodeArea:Ipsep, Recife}}->.searchArea;
+(
+way
+  ["name"!~"."]
+    ["highway"]
+  (area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+

@@ -1,0 +1,10 @@
+//Consulta uma area com os dados da relação mapeada no openstreetmap, acrescentar no inicio do numero da relação, 3600 e fazer a consulta no overpass 
+
+[out:json][timeout:250];
+area(3600303759)->.searchArea;
+(
+  way["highway"]["name"!~"."](area.searchArea);
+);
+out body;
+>;
+out skel qt;

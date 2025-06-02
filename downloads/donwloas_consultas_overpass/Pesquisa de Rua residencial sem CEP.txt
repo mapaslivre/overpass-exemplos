@@ -1,0 +1,14 @@
+//CODIGO OVERPASS PARA PESQUISA DE RUAS SEM CEP:
+
+
+[out:xml][timeout:25];
+
+{{geocodeArea:cavaleiro,jaboatão}}->.searchArea;
+
+(
+  way["highway"="residential"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

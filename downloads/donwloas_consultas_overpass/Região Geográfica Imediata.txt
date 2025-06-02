@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:pernambuco}}->.searchArea;
+relation["admin_level"="7"](area.searchArea);
+out body;
+>;
+out skel qt;

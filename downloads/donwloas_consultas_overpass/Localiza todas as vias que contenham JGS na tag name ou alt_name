@@ -1,0 +1,13 @@
+
+[out:json][timeout:25];
+{{geocodeArea:Jaraguá do Sul}}->.searchArea;
+(
+  way["name"~"^JGS*"](area.searchArea);
+  way["alt_name"~"^JGS*"](area.searchArea);
+ );
+out body;
+>;
+out skel qt;
+
+
+

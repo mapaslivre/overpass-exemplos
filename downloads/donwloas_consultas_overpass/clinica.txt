@@ -1,0 +1,8 @@
+
+[out:json][timeout:250];
+{{geocodeArea:vitoria de santo antão}}->.searchArea;
+nwr["amenity"="clinic"](area.searchArea);
+out body;
+>;
+out skel qt;
+

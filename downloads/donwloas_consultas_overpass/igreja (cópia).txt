@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+nwr["amenity"="place_of_worship"](area.searchArea);
+out body;
+>;
+out skel qt;

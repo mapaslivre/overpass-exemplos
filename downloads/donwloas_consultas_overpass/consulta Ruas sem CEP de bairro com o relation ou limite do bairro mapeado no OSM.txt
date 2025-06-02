@@ -1,0 +1,14 @@
+//Consulta rua residencial sem CEP com os dados do limite de Bairro mapeado no OSM.  
+
+
+[out:xml][timeout:25];
+
+area(3604271610) ->.searchArea;
+
+(
+  way["highway"="residential"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

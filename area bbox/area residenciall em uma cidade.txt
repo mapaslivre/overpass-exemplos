@@ -1,0 +1,8 @@
+
+
+[out:json][timeout:25];
+nwr["landuse"="residential"]({{bbox}});
+out body;
+>;
+out skel qt;
+

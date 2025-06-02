@@ -1,0 +1,7 @@
+[out:json][timeout:25];
+{{geocodeArea:centro, vitoria de santo antão}}->.searchArea;
+nwr["shop"="yes"](area.searchArea);
+out body;
+>;
+out skel qt;
+

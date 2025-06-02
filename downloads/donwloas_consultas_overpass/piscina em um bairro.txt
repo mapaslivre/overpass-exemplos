@@ -1,0 +1,8 @@
+
+[out:json][timeout:25];
+{{geocodeArea:matriz, vitoria de santo antão}}->.searchArea;
+nwr["leisure"="swimming_pool"](area.searchArea);
+out body;
+>;
+out skel qt;
+

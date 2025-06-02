@@ -1,0 +1,12 @@
+Milestones (marcos quilométricos) no Brasil, em coordenadas csv:
+
+[out:csv(::lon,::lat,"distance","ref",::type,::id)][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+(
+node["highway"="milestone"](area.searchArea);
+  );
+out body;
+>;
+out skel qt;
+
+Link para consulta no Overpass http://overpass-turbo.eu/s/HO9

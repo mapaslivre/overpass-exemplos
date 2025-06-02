@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+way["highway"="cycleway"](area.searchArea);
+out body;
+>;
+out skel qt;

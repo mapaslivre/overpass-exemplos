@@ -1,0 +1,47 @@
+// @name Relações administrativas quebradas
+
+// Deslize o mapa para a área desejada - áreas muito grandes podem dar timeout 
+
+[out:json];
+
+// Defina o nível administrativo desejado:
+//  8 para municípios
+//  9 para distritos
+// 10 para bairros
+make var nivel="10" -> .level_set;
+
+// Por padrão, a busca é feitas na área visível do mapa (menor a área => mais rápida)
+// Para buscas numa UF, descomente a linha abaixo e defina a desejada
+// area ['ISO3166-2'='BR-RS'] [admin_level=4] -> .uf;
+
+foreach.uf {make var em_uf="1" -> .busca;};
+
+if ( busca.u(t["em_uf"]) == "1") {
+  rel [boundary=administrative] (if: t["admin_level"] == level_set.u(t["nivel"]))
+    (area.uf) -> .a;
+} else {
+  rel [boundary=administrative] (if: t["admin_level"] == level_set.u(t["nivel"]))
+    ({{bbox}}) -> .a;
+}
+
+foreach.a -> .ma {
+  (.ma >>;) -> .nwr_ma;
+  node.nwr_ma(way_link:1) -> .dead_end;
+  if (dead_end.count(nodes) > 0) {
+    (.ma; .ma >;);
+    out geom;
+  } else {
+    way(r.ma) -> .total_ways;
+    way(r.ma:"outer") -> .outer_ways;
+    way(r.ma:"inner") -> .inner_ways;    
+    if (total_ways.count(ways) != (outer_ways.count(ways) + inner_ways.count(ways))) {
+      (.ma; .ma>;);
+      out geom center;
+    };
+  }; 
+};
+
+{{style:
+  node {width:0; opacity:0; fill-opacity:0; }
+  relation {opacity:1; width:1; color:red; text:name;}
+}}

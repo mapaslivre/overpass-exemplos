@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+relation["admin_level"="10"](area.searchArea);
+out body;
+>;
+out skel qt;

@@ -1,0 +1,8 @@
+[out:json][timeout:250];
+{{geocodeArea:Recife, Pernambuco}}->.searchArea;
+(
+  way["highway"]["name"!~"."](area.searchArea);
+);
+out body;
+>;
+out skel qt;

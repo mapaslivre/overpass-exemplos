@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+nwr["shop"="yes"]({{bbox}});
+out body;
+>;
+out skel qt;
+

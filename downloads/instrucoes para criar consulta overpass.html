@@ -102,28 +102,134 @@ out skel qt;
     🔄 <strong>Dica:</strong> Mova o mapa e dê zoom para ajustar a área de busca antes de executar.
   </div>
 
-  <h2>5. Exemplos práticos</h2>
+<h2>5. Exemplos práticos</h2>
 
-  <h3>📚 Exemplo: Escolas</h3>
-  <pre><code>nwr["amenity"="school"](area.searchArea);</code></pre>
+<h3>📚 Exemplo: Escolas</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+nwr["amenity"="school"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>🏥 Exemplo: Hospitais</h3>
-  <pre><code>nwr["amenity"="hospital"](area.searchArea);</code></pre>
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+nwr["amenity"="school"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>⛪ Exemplo: Igrejas</h3>
-  <pre><code>nwr["amenity"="place_of_worship"](area.searchArea);</code></pre>
+<h3>🏥 Exemplo: Hospitais</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+nwr["amenity"="hospital"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>🚲 Exemplo: Ciclovias</h3>
-  <pre><code>way["highway"="cycleway"](area.searchArea);</code></pre>
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+nwr["amenity"="hospital"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>🚶 Exemplo: Calçadas</h3>
-  <pre><code>way["footway"="sidewalk"](area.searchArea);</code></pre>
+<h3>⛪ Exemplo: Igrejas</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+nwr["amenity"="place_of_worship"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>🏛️ Exemplo: Prefeitura</h3>
-  <pre><code>nwr["office"="government"](area.searchArea);</code></pre>
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+nwr["amenity"="place_of_worship"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
 
-  <h3>🗺️ Exemplo: Limites de bairro</h3>
-  <pre><code>relation["admin_level"="10"](area.searchArea);</code></pre>
+<h3>🚲 Exemplo: Ciclovias</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+way["highway"="cycleway"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+way["highway"="cycleway"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h3>🚶 Exemplo: Calçadas</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+way["footway"="sidewalk"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+way["footway"="sidewalk"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h3>🏛️ Exemplo: Prefeitura</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+nwr["office"="government"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+nwr["office"="government"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h3>🗺️ Exemplo: Limites de bairro</h3>
+<h4>🔎 Usando área nomeada (searchArea)</h4>
+<pre><code>[out:json][timeout:25];
+{{geocodeArea:São Paulo}}->.searchArea;
+relation["admin_level"="10"](area.searchArea);
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
+<h4>🗺️ Usando área visível do mapa (bbox)</h4>
+<pre><code>[out:json][timeout:25];
+relation["admin_level"="10"]({{bbox}});
+out body;
+&gt;;
+out skel qt;
+</code></pre>
+
 
   <h2>6. Onde encontrar outras tags?</h2>
   <p>Você pode consultar o site <a href="https://taginfo.openstreetmap.org/" target="_blank">TagInfo</a> para descobrir outras combinações possíveis de <code>key=value</code>.</p>

@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:Ilha do Leite, Recife}}->.searchArea;
+nwr["amenity"="hospital"](area.searchArea);
+out body;
+>;
+out skel qt;

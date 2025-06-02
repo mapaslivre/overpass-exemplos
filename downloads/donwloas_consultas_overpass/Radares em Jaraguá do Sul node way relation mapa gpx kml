@@ -1,0 +1,14 @@
+16. Radares em Jaraguá do Sul (node/way/relation, mapa, gpx, kml)
+
+[out:json][timeout:25];
+{{geocodeArea:Jaragua do Sul}}->.searchArea;
+(
+  node["highway"="speed_camera"](area.searchArea);
+  way["highway"="speed_camera"](area.searchArea);
+  relation["highway"="speed_camera"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+Consulta site Overpass: http://overpass-turbo.eu/s/HOs

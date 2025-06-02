@@ -1,0 +1,13 @@
+//Consulta ruas, rua local ou rural, avenida secundaria e terciaria sem CEP com a relação mapeada no OSM, adicionar "3600" no inicio do numero da relação e fazer a consulta no overpass.
+
+[out:xml][timeout:25];
+
+area(3604268598) ->.searchArea;
+
+(
+  way["highway"~"unclassified|residential|tertiary|secondary"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

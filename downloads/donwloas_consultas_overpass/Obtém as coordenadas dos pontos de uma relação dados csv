@@ -1,0 +1,16 @@
+Obtém as coordenadas dos pontos de uma relação (dados csv):
+[usar nos radares]
+
+https://gis.stackexchange.com/questions/164333/how-to-plot-a-list-of-points-on-overpass-turbo-openstreetmap
+
+
+[out:csv(::lat,::lon;false)];
+relation(6728746);
+>;
+out body;
+>;
+out skel qt;
+
+
+Consulta site overpass: https://overpass-turbo.eu/s/HPJ
+

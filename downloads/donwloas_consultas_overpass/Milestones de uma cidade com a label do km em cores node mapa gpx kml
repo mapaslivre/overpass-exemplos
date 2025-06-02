@@ -1,0 +1,20 @@
+Milestones de uma cidade, com a label do km em cores (node, mapa, gpx, kml):
+
+[out:json][timeout:900];
+{{geocodeArea:Jaragua do Sul}}->.searchArea;
+(
+  node["highway"="milestone"](area.searchArea);
+  );
+out body;
+>;
+out skel qt;
+
+{{style:
+
+node[highway]{
+  text: distance;
+  color:red;
+}
+}}
+
+consulta link no site do overpass http://overpass-turbo.eu/s/HNZ

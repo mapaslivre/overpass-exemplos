@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+{{geocodeArea:vitoria de santo antão, pernambuco}}->.searchArea;
+relation["admin_level"="9"](area.searchArea);
+out body;
+>;
+out skel qt;

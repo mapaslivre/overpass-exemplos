@@ -1,0 +1,20 @@
+Todas as edificações que tem “building:levels” maior que 01 andar e não são building=house:
+
+[out:json][timeout:125];
+{{geocodeArea:jaraguá do Sul}}->.searchArea;
+(
+  node["building:levels"](if: t["building:levels"] > 1)
+  ["building"!="house"]
+  (area.searchArea);
+  way["building:levels"](if: t["building:levels"] > 1)
+  ["building"!="house"]
+  (area.searchArea);
+  relation["building:levels"](if: t["building:levels"] > 1)
+  ["building"!="house"]
+  (area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+Consulta site Overpass: https://overpass-turbo.eu/s/H1o

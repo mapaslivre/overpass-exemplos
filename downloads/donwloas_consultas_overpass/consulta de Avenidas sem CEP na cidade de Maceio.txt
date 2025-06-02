@@ -1,0 +1,13 @@
+//Consulta de Avenidas sem CEP na cidade de Maceio,Alagoras 
+
+[out:xml][timeout:25];
+
+{{geocodeArea:Maceio}}->.searchArea;
+
+(
+  way["highway"~"primary|tertiary|secondary"]["postal_code"!~".*"](area.searchArea);
+);
+
+out meta;
+>;
+out meta qt;

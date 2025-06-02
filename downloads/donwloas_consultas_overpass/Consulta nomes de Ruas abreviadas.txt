@@ -1,0 +1,27 @@
+/*
+Pesquisa de abreviacoes no OSM. Gera pontos geograficos no mapa.
+*/
+[out:json][timeout:900];
+{{geocodeArea:Rio de Janeiro}}->.searchArea;
+(
+
+  way[highway]["name"~"^R\\.",i](area.searchArea);
+  way[highway]["name"~"Tv\\.",i](area.searchArea);
+  way[highway]["name"~"Tra\\.",i](area.searchArea);
+  way[highway]["name"~"Trav\\.",i](area.searchArea);
+  way[highway]["name"~"Ten\\.",i](area.searchArea);
+  way[highway]["name"~"Sgt\\.",i](area.searchArea);
+  way[highway]["name"~"Ver\\.",i](area.searchArea);
+  way[highway]["name"~"Sra\\.",i](area.searchArea);
+ 
+);
+out body;
+>;
+out skel qt;
+
+
+
+
+
+https://pic4review.pavie.info/#/mission/2244/review
+

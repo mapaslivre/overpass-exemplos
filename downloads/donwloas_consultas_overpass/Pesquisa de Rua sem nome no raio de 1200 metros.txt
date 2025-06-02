@@ -1,0 +1,16 @@
+//Pesquisa de Ruas sem Nome em uma cidade no Raio de 1200 metros 
+
+[out:json][timeout:25];
+
+{{radius=1200}}
+
+(
+
+    way["name"!~"."]
+    ["highway"](around:{{radius}},{{geocodeCoords:Riachão das Neves,Bahia}});
+  
+);
+
+out body;
+>;
+out skel qt;

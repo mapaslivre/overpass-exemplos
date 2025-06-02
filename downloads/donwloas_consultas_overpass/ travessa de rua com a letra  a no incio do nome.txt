@@ -1,0 +1,11 @@
+//consulta Rua que tem no inicio do nome a letra a, como por exemplo "2a 2a Travessa "
+
+[out:json][timeout:180];
+{{geocodeArea:Pernambuco }} -> .a;
+(
+  way [highway] ["name"~"[0-9][ao]"] (area.a);
+  way [highway] ["alt_name"~"[0-9][ao]"] (area.a);
+);
+out body;
+>;
+out skel qt;

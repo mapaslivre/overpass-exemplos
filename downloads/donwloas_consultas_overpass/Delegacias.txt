@@ -1,0 +1,11 @@
+//Pesquisa Delegacias em uma area amostra no mapa overpass 
+
+[out:xml]/*fixed by auto repair*/[bbox:{{bbox}}][timeout:800];
+
+// determine set of police stations
+(
+  node[amenity=police];
+  way[amenity=police];
+  rel[amenity=police];
+)->.polices; // put them into the set "polices"
+(._;>;); out meta;/*fixed by auto repair*/

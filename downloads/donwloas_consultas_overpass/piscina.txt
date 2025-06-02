@@ -1,0 +1,6 @@
+[out:json][timeout:25];
+nwr["leisure"="swimming_pool"]({{bbox}});
+out body;
+>;
+out skel qt;
+
