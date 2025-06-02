@@ -112,7 +112,7 @@
       const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${folderPath}`);
       const data = await response.json();
 
-      allFiles = data.filter(item => item.type === 'file' && item.name !== 'index.html');
+      allFiles = data.filter(item => item.type === 'file');
 
       filesDiv.innerHTML = `
         <h2><i class="fa-solid fa-folder-open"></i> ${folderPath}</h2>
