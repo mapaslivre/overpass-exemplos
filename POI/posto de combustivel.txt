@@ -1,0 +1,10 @@
+[out:json][timeout:25];
+
+(
+  node["amenity"="fuel"]({{bbox}});
+ 
+);
+
+out body;
+>;
+out skel qt;

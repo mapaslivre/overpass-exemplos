@@ -1,0 +1,32 @@
+11. Localiza os marcos km (milestones) nas vias, próximos 30m da tag police=traffic_police:
+[faz duas pesquisas e depois cruza os dados]
+
+[out:json][timeout:900];
+{{geocodeArea:Brasil}}->.searchArea;
+
+// determine set of police=taffic_police
+(
+  node[police=traffic_police](area.searchArea);
+  way[police=traffic_police](area.searchArea);
+  rel[police=traffic_police](area.searchArea);
+)->.polices; // put them into the set "polices"
+
+// determine set of milestone
+(
+  node[highway=milestone](area.searchArea);
+  way[highway=milestone](area.searchArea);
+  rel[highway=milestone](area.searchArea);
+)->.miles; // put them into the set "miles"
+
+// determine set of milestone proximo police
+(
+  node.miles(around.polices:30);
+  way.miles(around.polices:30);
+  rel.miles(around.polices:30);
+);
+out body;
+>;
+out skel qt;
+
+link para overpass: http://overpass-turbo.eu/s/HQf
+
